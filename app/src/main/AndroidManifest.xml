@@ -12,10 +12,13 @@
         android:theme="@style/Theme.HealthManager"
         tools:targetApi="31">
         <activity
-            android:name=".SportManagerActivity"
+            android:name=".SleepManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".WeightManagerActivity"
+            android:name=".SportManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WeightManagementActivity"
             android:exported="false" />
         <activity
             android:name=".RetrieveActivity"

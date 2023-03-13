@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ import com.healthmanager.util.ActivityCollector;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SportManagerActivity extends AppCompatActivity {
+public class SportManagementActivity extends AppCompatActivity {
     private ImageView SportReturn,StepStatistics;
     private SensorManager sensorManager;//定义传感器管理
     private TextView StepShow,TagetStep,StepSug;
@@ -48,7 +47,7 @@ public class SportManagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sportmanager);
+        setContentView(R.layout.activity_sportmanagement);
         init();
         ActivityCollector.addActivity(this);
     }
@@ -92,13 +91,13 @@ public class SportManagerActivity extends AppCompatActivity {
 //                    startActivity(intent);
 //                    finish();
                 case R.id.iv_sportreturn://返回界面按钮
-                    intent=new Intent(SportManagerActivity.this,MainActivity.class);
+                    intent=new Intent(SportManagementActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
                     break;
                 case R.id.btn_savestep://存储步数按钮
                     int stepnow=Integer.valueOf(StepShow.getText().toString());
-                    MyDatabaseHelper dbOpenHelper=new MyDatabaseHelper(SportManagerActivity.this);
+                    MyDatabaseHelper dbOpenHelper=new MyDatabaseHelper(SportManagementActivity.this);
                     SQLiteDatabase dbwrite=dbOpenHelper.getWritableDatabase();
                     SimpleDateFormat sdf=new SimpleDateFormat();
                     sdf.applyPattern("MM-dd");
@@ -108,7 +107,7 @@ public class SportManagerActivity extends AppCompatActivity {
                     values.put("etime",savedata);
                     values.put("step",stepnow);
                     dbwrite.insert("tb_yd",null,values);
-                    Toast.makeText(SportManagerActivity.this, "存储成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SportManagementActivity.this, "存储成功", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -125,8 +124,8 @@ public class SportManagerActivity extends AppCompatActivity {
     protected void onDestroy() {
         //取消传感器监听
 //        sensorManager.unregisterListener(this);
-        super.onDestroy();
         ActivityCollector.removeActivity(this);
+        super.onDestroy();
     }
 
     public int bmitostep(float BMI) //togicstep（）的相关函数，此函数用于根据bmi推荐步数

@@ -20,7 +20,7 @@ import com.healthmanager.util.ActivityCollector;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class WeightManagerActivity extends AppCompatActivity {
+public class WeightManagementActivity extends AppCompatActivity {
     private TextView BmiShowText,BodyFatPercentageShowText,BmiEvalBtn,SaveBmiBtn;
     private EditText WeightScan,HeightScan,AgeScan;
     private ImageView WeightReturn,BMIStatisticsBtn;
@@ -29,7 +29,7 @@ public class WeightManagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weightmanager);
+        setContentView(R.layout.activity_weightmanagement);
         ActivityCollector.addActivity(this);
         init();
     }
@@ -73,12 +73,12 @@ public class WeightManagerActivity extends AppCompatActivity {
                     agestr=AgeScan.getText().toString().trim();
                     if(bmitextsavestr.length!=2||bmitztextsavestr.length!=2)
                     {
-                        Toast.makeText(WeightManagerActivity.this, "请评估之后再进行存储", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeightManagementActivity.this, "请评估之后再进行存储", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     else
                     {
-                        MyDatabaseHelper dbOpenHelper=new MyDatabaseHelper(WeightManagerActivity.this);
+                        MyDatabaseHelper dbOpenHelper=new MyDatabaseHelper(WeightManagementActivity.this);
                         SQLiteDatabase dbwrite=dbOpenHelper.getWritableDatabase();
                         SimpleDateFormat sdf=new SimpleDateFormat();
                         sdf.applyPattern("MM-dd");
@@ -93,7 +93,7 @@ public class WeightManagerActivity extends AppCompatActivity {
                         values.put("bmi",Float.valueOf(bmitextsavestr[0]));
                         values.put("bodyfatrate",Float.valueOf(bmitztextsavestr[0]));
                         dbwrite.insert("tb_weight",null,values);
-                        Toast.makeText(WeightManagerActivity.this, "存储成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeightManagementActivity.this, "存储成功", Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case R.id.btn_bmieval: //计算BMI按钮
@@ -115,7 +115,7 @@ public class WeightManagerActivity extends AppCompatActivity {
                     //判断用户输入的身高、体重、年龄是否为空
                     if(TextUtils.isEmpty(heightstr)||TextUtils.isEmpty(weightstr)||TextUtils.isEmpty(agestr))
                     {
-                        Toast.makeText(WeightManagerActivity.this, "输入的数据不能为空", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeightManagementActivity.this, "输入的数据不能为空", Toast.LENGTH_SHORT).show();
                         HeightScan.requestFocus();
                         WeightScan.requestFocus();
                         AgeScan.requestFocus();
@@ -134,7 +134,7 @@ public class WeightManagerActivity extends AppCompatActivity {
                     BodyFatPercentageShowText.setText(bmitizhishow);//将用户的体脂率呈现于界面
                     break;
                 case R.id.iv_weightreturn: //返回按钮
-                    Intent intent=new Intent(WeightManagerActivity.this,MainActivity.class);
+                    Intent intent=new Intent(WeightManagementActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
                     break;
@@ -222,7 +222,7 @@ public class WeightManagerActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         ActivityCollector.removeActivity(this);
+        super.onDestroy();
     }
 }

@@ -76,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=null;
                 switch(i){
                     case 0:
-                        intent=new Intent(MainActivity.this,WeightManagerActivity.class);
+                        intent=new Intent(MainActivity.this, WeightManagementActivity.class);
                         startActivity(intent);
                         finish();
                         break;
                     case 1:
-                        Intent intente=new Intent(MainActivity.this,SportManagerActivity.class);
+                        Intent intente=new Intent(MainActivity.this, SportManagementActivity.class);
                         startActivity(intente);
                         finish();
                         break;
@@ -90,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
 //                        startActivity(intent);
 //                        finish();
 //                        break;
-//                    case 3:
-//                        intent=new Intent(MainActivity.this,SleepActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                        break;
+                    case 3:
+                        intent=new Intent(MainActivity.this,SleepManagementActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
 //                    case 4:
 //                        intent=new Intent(MainActivity.this,CaseActivity.class);
 //                        startActivity(intent);
@@ -115,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         ActivityCollector.removeActivity(this);
+        super.onDestroy();
+
     }
 }

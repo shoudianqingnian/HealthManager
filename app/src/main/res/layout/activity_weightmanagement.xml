@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#f2f2f2"
-    tools:context=".WeightManagerActivity">
+    tools:context=".WeightManagementActivity">
     <LinearLayout
         style="@style/common_title_bar" >
 
