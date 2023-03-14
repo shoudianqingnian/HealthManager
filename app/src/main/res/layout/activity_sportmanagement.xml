@@ -1,140 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#f2f2f2"
+    android:scrollbars="none"
+    android:overScrollMode="never"
     tools:context=".SportManagementActivity">
     <LinearLayout
-        style="@style/common_title_bar" >
-
-        <ImageView
-            android:id="@+id/iv_sportreturn"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:padding="8dp"
-            android:src="@drawable/returnfig" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="运动管理         "
-            android:textSize="16sp" />
-    </LinearLayout>
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal"
-        android:background="@color/colorThem"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#f2f2f2">
         <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            style="@style/common_title_bar" >
+
+            <ImageView
+                android:id="@+id/iv_sportreturn"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:padding="8dp"
+                android:src="@drawable/returnfig" />
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="今日步数为："
-                android:textSize="20sp"
-                android:textColor="#ffffff"/>
-            <TextView
-                android:id="@+id/tv_stepshow"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:gravity="center"
-                android:textSize="40sp"
-                android:textColor="#ffffff"/>
+                android:text="运动管理         "
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+            android:background="@color/colorThem"
+            android:gravity="center">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:text="（建议步数:"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"/>
-                <TextView
-                    android:id="@+id/tv_targetstep"
-                    android:layout_width="65dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:textSize="16sp"
-                    android:textColor="#ffffff"/>
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="今日步数为："
+                    android:textSize="20sp"
+                    android:textColor="#ffffff"/>
+                <TextView
+                    android:id="@+id/tv_stepshow"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:textSize="40sp"
+                    android:textColor="#ffffff"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:text="步）"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:text="（建议步数:"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp"/>
+                    <TextView
+                        android:id="@+id/tv_targetstep"
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:textColor="#ffffff"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:text="步）"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="#ffffff">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:src="@drawable/warningfig"/>
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="如果您尚未评估您的BMI指数，建议您前去测量。因为您的建议步数是根据您的BMI指数进行合理推荐的。"
-            android:textSize="14sp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="#ffffff">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:src="@drawable/suggestion"/>
-        <TextView
-            android:id="@+id/tv_stepsug"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:src="@drawable/warningfig"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="如果您尚未评估您的BMI指数，建议您前去测量。因为您的建议步数是根据您的BMI指数进行合理推荐的。"
+                android:textSize="14sp"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:src="@drawable/suggestion"/>
+            <TextView
+                android:id="@+id/tv_stepsug"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_savestep"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorThem"
+            android:text="存储步数"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_stepstatistics"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="70dp"
+            android:padding="8dp"
+            android:src="@drawable/statistics" />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="170dp"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:text="统计"
+            android:textSize="12sp"/>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_savestep"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginRight="40dp"
-        android:background="@color/colorThem"
-        android:text="存储步数"
-        android:textColor="@android:color/white"
-        android:textSize="15sp" />
-
-    <ImageView
-        android:id="@+id/iv_stepstatistics"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="70dp"
-        android:padding="8dp"
-        android:src="@drawable/statistics" />
-    <TextView
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="170dp"
-        android:gravity="center"
-        android:text="统计"
-        android:textSize="12sp"/>
-</LinearLayout>
+</ScrollView>

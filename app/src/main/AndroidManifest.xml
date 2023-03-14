@@ -12,6 +12,9 @@
         android:theme="@style/Theme.HealthManager"
         tools:targetApi="31">
         <activity
+            android:name=".DietManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".SleepManagementActivity"
             android:exported="false" />
         <activity

@@ -85,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intente);
                         finish();
                         break;
-//                    case 2:
-//                        intent=new Intent(MainActivity.this,EatActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                        break;
+                    case 2:
+                        intent=new Intent(MainActivity.this,DietManagementActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
                     case 3:
                         intent=new Intent(MainActivity.this,SleepManagementActivity.class);
                         startActivity(intent);
