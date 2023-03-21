@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         //返回按钮
         MainReturn=findViewById(R.id.iv_mainreturn);
-
+        MainReturn.setOnClickListener(o);
         //GridView布局添加文件
         gvInfo=findViewById(R.id.gvInfo);
         gvInfo2=findViewById(R.id.gvInfo2);
@@ -112,6 +112,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    View.OnClickListener o=new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch(view.getId()){
+                case R.id.iv_mainreturn: //返回登录界面按钮
+                    Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onDestroy() {

@@ -2,6 +2,7 @@ package com.healthmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -42,15 +43,15 @@ public class RetrieveActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch(v.getId())
             {
-                case R.id.iv_retrievereturn:
+                case R.id.iv_retrievereturn:  //返回按钮
                     Intent intent=new Intent(RetrieveActivity.this,LoginActivity.class);
                     startActivity(intent);
                     finish();
                     break;
-                case R.id.btn_searchpwd:
-                    String userid=FuserAccount.getText().toString().trim();
+                case R.id.btn_searchpwd: //查找密码按钮
+                    String useraccount=FuserAccount.getText().toString().trim();
                     SQLiteDatabase dbRead=dbOpenHelper.getReadableDatabase();
-                    Cursor cursor=dbRead.query("tb_pwd",null,"userid=?",new String[]{userid},null,null,null);
+                    Cursor cursor=dbRead.query("tb_pwd",null,"useraccount=?",new String[]{useraccount},null,null,null);
                     if(cursor.getCount()==0)//验证账号是否存在
                     {
                         Toast.makeText(RetrieveActivity.this, "该账号尚未注册", Toast.LENGTH_SHORT).show();
@@ -60,7 +61,7 @@ public class RetrieveActivity extends AppCompatActivity {
                     {
                         while(cursor.moveToNext())
                         {
-                            String password=cursor.getString(cursor.getColumnIndex("password"));
+                            @SuppressLint("Range") String password=cursor.getString(cursor.getColumnIndex("password"));
                             Fuserpassword.setText(password);
                         }
                     }

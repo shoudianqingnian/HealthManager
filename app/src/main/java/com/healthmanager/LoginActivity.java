@@ -2,6 +2,7 @@ package com.healthmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -92,7 +93,7 @@ public class LoginActivity extends AppCompatActivity{
         }
         SQLiteDatabase dbRead=dbOpenHelper.getReadableDatabase();
         Cursor cursor=dbRead.query("tb_pwd",
-                new String[]{"userpassword"},
+                null,
                 "useraccount=?",
                 new String[]{useraccount},
                 null,null,null);
@@ -105,7 +106,7 @@ public class LoginActivity extends AppCompatActivity{
         {
             while (cursor.moveToNext())          //验证账号密码是否匹配
             {
-                String getpassword=cursor.getString(cursor.getColumnIndex("userpassword"));
+                @SuppressLint("Range")String getpassword=cursor.getString(cursor.getColumnIndex("userpassword"));
                 if(getpassword.equalsIgnoreCase(userpassword))//验证密码
                 {
                     final ProgressDialog pd=new ProgressDialog(LoginActivity.this ) ;//等待动画
@@ -129,8 +130,8 @@ public class LoginActivity extends AppCompatActivity{
                     /**
                      *跳转到主界面
                      */
-                    Intent intentm=new Intent(LoginActivity.this,MainActivity.class) ;
-                    startActivity(intentm) ;
+                    Intent intent=new Intent(LoginActivity.this,MainActivity.class) ;
+                    startActivity(intent) ;
                 }
                 else
                 {
