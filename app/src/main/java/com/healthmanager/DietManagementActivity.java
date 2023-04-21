@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,12 +24,20 @@ public class DietManagementActivity extends AppCompatActivity {
     private ImageView DietReturn,CalDataStatices;
     private TextView CalShow,TargetCalShow,EatAdvice;
     private Button SelectFood1,SelectFood2,SelectFood3,RecordFood,SaveCal;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dietmanagement);
         ActivityCollector.addActivity(this);
         init();
+        preferences=getSharedPreferences("healthshareddata",MODE_PRIVATE);
+        editor=preferences.edit();
+        String SaveCal=preferences.getString("savecal","");
+        if(!SaveCal.equals("")){
+            CalShow.setText(SaveCal);
+        }
     }
 
     private void init(){
@@ -48,7 +57,6 @@ public class DietManagementActivity extends AppCompatActivity {
         SelectFood3.setOnClickListener(o);
         RecordFood.setOnClickListener(o);
         SaveCal.setOnClickListener(o);
-        CalShow.setText("0");
         //caltarget();
         TargetCalShow.setText("0");
 //        Intent intentget=getIntent();
@@ -106,6 +114,8 @@ public class DietManagementActivity extends AppCompatActivity {
                     int nowlunch=Integer.parseInt(SelectFood2.getText().toString());
                     int nowdinner=Integer.parseInt(SelectFood3.getText().toString());
                     CalShow.setText(String.valueOf(nowbre+nowlunch+nowdinner));
+                    editor.putString("savecal",String.valueOf(nowbre+nowlunch+nowdinner));
+                    editor.apply();
                     break;
             }
         }

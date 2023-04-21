@@ -128,7 +128,7 @@ public class SportManagementActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public int bmitostep(float BMI) //togicstep（）的相关函数，此函数用于根据bmi推荐步数
+    public int bmitostep(float BMI) //targetstep（）的相关函数，此函数用于根据bmi推荐步数
     {
         int bmitostep;
         if (BMI < 24) {
@@ -143,7 +143,7 @@ public class SportManagementActivity extends AppCompatActivity {
         return bmitostep;
     }
 
-    private void exerciseremind()
+    private void exerciseremind() //推送建议功能
     {
         int nowstep=Integer.parseInt(StepShow.getText().toString());
         int togicstep=Integer.parseInt(TagetStep.getText().toString());

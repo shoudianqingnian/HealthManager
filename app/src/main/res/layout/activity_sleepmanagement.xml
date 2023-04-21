@@ -56,6 +56,7 @@
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:text="0"
                         android:textColor="#ffffff"
                         android:textSize="25sp" />
                     <TextView
@@ -70,6 +71,7 @@
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:text="0"
                         android:textColor="#ffffff"
                         android:textSize="25sp" />
                     <TextView
@@ -201,14 +203,15 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="170dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="185dp"
             android:padding="8dp"
             android:src="@drawable/statistics" />
         <TextView
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="170dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="统计"
             android:textSize="12sp"/>

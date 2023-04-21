@@ -6,9 +6,11 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,12 +30,22 @@ public class SleepManagementActivity extends AppCompatActivity {
     private Button SelectBedtime,SelectWakingtime,SleepTimeset,SaveSleepData;
     private int Inhour,Inminute,Outhour,Outminute;//获取入睡，醒来时间
     public int hourset,minuteset;//设置睡眠时长
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleepmanagement);
         ActivityCollector.addActivity(this);
+        preferences=getSharedPreferences("healthshareddata",MODE_PRIVATE);
+        editor=preferences.edit();
         init();
+        String SaveSleepHour=preferences.getString("savesleephour","");
+        String SaveSleepMin=preferences.getString("savesleepminute","");
+        if(!SaveSleepHour.equals("") && !SaveSleepMin.equals("")){
+            Hourshow.setText(SaveSleepHour);
+            Minuteshow.setText(SaveSleepMin);
+        }
     }
 
     private void init(){
@@ -53,9 +65,7 @@ public class SleepManagementActivity extends AppCompatActivity {
         SaveSleepData.setOnClickListener(o);
         SelectBedtime.setText("00:00");
         SelectWakingtime.setText("00:00");
-        Hourshow.setText("0");
         // targetsleep();
-        Minuteshow.setText("0");
         // sleepsuggestion();
     }
 
@@ -102,6 +112,9 @@ public class SleepManagementActivity extends AppCompatActivity {
                     }
                     Hourshow.setText(String.valueOf(hourset));
                     Minuteshow.setText(String.valueOf(minuteset));
+                    editor.putString("savesleephour",String.valueOf(hourset));
+                    editor.putString("savesleepminute",String.valueOf(minuteset));
+                    editor.apply();
                     break;
                 case R.id.selctbedtime://选择入睡时间按钮
                     new TimePickerDialog(SleepManagementActivity.this, AlertDialog.THEME_HOLO_LIGHT,new TimePickerDialog.OnTimeSetListener() {
@@ -122,7 +135,7 @@ public class SleepManagementActivity extends AppCompatActivity {
                 case R.id.iv_sleepreturn://返回主界面按钮
                     Intent intent=new Intent(SleepManagementActivity.this,MainActivity.class);
                     startActivity(intent);
-                    finish();
+//                    finish();
                     break;
             }
         }
@@ -137,12 +150,12 @@ public class SleepManagementActivity extends AppCompatActivity {
     private int minutecount(int Inminute,int Outminute)
     {
         int minuteset;
-        if(Inminute>Outminute)
+        if(Inminute>Outminute) //23:10-01:01
         {
             Inminute=60-Inminute;
             minuteset=Outminute+Inminute;
         }
-        else {
+        else {  //01:10-02:01
             minuteset=Outminute-Inminute;
         }
         return minuteset;
@@ -154,24 +167,24 @@ public class SleepManagementActivity extends AppCompatActivity {
         int hourset;
         if(Inminute>Outminute)
         {
-            if(Inhour>Outhour)
+            if(Inhour>Outhour) //23:10-01:01
             {
                 Inhour=24-Inhour;
                 hourset=Inhour+Outhour-1;
             }
-            else
+            else //01:10-02:01
             {
                 hourset=Outhour-Inhour-1;
             }
         }
         else
         {
-            if(Inhour>Outhour)
+            if(Inhour>Outhour) //23:01-01:10
             {
                 Inhour=24-Inhour;
                 hourset=Inhour+Outhour;
             }
-            else
+            else //01:01-02:10
             {
                 hourset=Outhour-Inhour;
             }
@@ -288,6 +301,7 @@ public class SleepManagementActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        System.out.println("onDestory");
         ActivityCollector.removeActivity(this);
         super.onDestroy();
     }

@@ -71,13 +71,11 @@ public class WeightManagementActivity extends AppCompatActivity {
                     heightstr=HeightScan.getText().toString().trim();
                     weightstr=WeightScan.getText().toString().trim();
                     agestr=AgeScan.getText().toString().trim();
-                    if(bmitextsavestr.length!=2||bmitztextsavestr.length!=2)
-                    {
+                    if(bmitextsavestr.length!=2||bmitztextsavestr.length!=2) {
                         Toast.makeText(WeightManagementActivity.this, "请评估之后再进行存储", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    else
-                    {
+                    else {
                         MyDatabaseHelper dbOpenHelper=new MyDatabaseHelper(WeightManagementActivity.this);
                         SQLiteDatabase dbwrite=dbOpenHelper.getWritableDatabase();
                         SimpleDateFormat sdf=new SimpleDateFormat();
@@ -136,7 +134,6 @@ public class WeightManagementActivity extends AppCompatActivity {
                 case R.id.iv_weightreturn: //返回按钮
                     Intent intent=new Intent(WeightManagementActivity.this,MainActivity.class);
                     startActivity(intent);
-                    finish();
                     break;
             }
         }

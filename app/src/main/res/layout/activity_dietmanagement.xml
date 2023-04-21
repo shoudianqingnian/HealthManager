@@ -50,6 +50,7 @@
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:text="0"
                     android:textSize="40sp"
                     android:textColor="#ffffff"/>
                 <TextView
@@ -144,12 +145,6 @@
                 android:textColor="@color/colorThem"
                 android:textSize="18sp" />
         </LinearLayout>
-        <View
-            android:layout_width="180dp"
-            android:layout_height="1px"
-            android:layout_marginLeft="130dp"
-            android:layout_marginRight="101dp"
-            android:background="#07a6e6"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -171,12 +166,6 @@
                 android:textColor="@color/colorThem"
                 android:textSize="18sp" />
         </LinearLayout>
-        <View
-            android:layout_width="180dp"
-            android:layout_height="1px"
-            android:layout_marginLeft="130dp"
-            android:layout_marginRight="101dp"
-            android:background="#07a6e6"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -228,14 +217,15 @@
             android:id="@+id/iv_caldatastatices"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginTop="30dp"
             android:padding="8dp"
             android:src="@drawable/statistics" />
         <TextView
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="170dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="统计"
             android:textSize="12sp"/>
