@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
             RegisterAccount.requestFocus() ;                        //失去焦点
             return ;
         }
-        else if(useraccount.length()!=6){                         //验证输入的账号是否为合理
+        else if(useraccount.length()<6 || useraccount.length()>10){                         //验证输入的账号是否为合理
             Toast.makeText(this,"账号不合理",Toast.LENGTH_SHORT).show();
             return;
         }//验证输入的账号是否为六位

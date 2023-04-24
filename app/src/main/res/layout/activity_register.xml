@@ -64,7 +64,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:hint="设置一个六位的账号"
+                android:hint="设置一个6-10位的账号"
                 android:inputType="number"
                 android:textColor="@android:color/darker_gray"
                 android:textColorHint="@android:color/darker_gray"

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
@@ -113,6 +115,60 @@ public class SportManagementActivity extends AppCompatActivity {
         }
     };
 
+
+//    @Override
+//    public void onSensorChanged(SensorEvent event) {
+//        Sensor sensor=event.sensor;
+//        synchronized (this) {
+//            //判断传感器的类型是否为重力传感器(加速度传感器)
+//            int j=(sensor.getType()==Sensor.TYPE_ACCELEROMETER)?1:0;
+//            if(j==1){
+//                float vSum=0;
+//                //获取三轴的加速度
+//                for (int i=0;i<3;i++)
+//                {
+//                    final float v=mYOffset+event.values[i]*mScale[j];
+//                    vSum+=v;
+//                }
+//                int k=0;
+//                float v=vSum/3;//获取三轴加速度的平均值
+//                float direction=(v>mLastValues[k]?1:(v<mLastValues[k]?-1:0));
+//                if(direction==-mLastDirections[k])
+//                {
+//                    int exType=(direction>0?0:1);
+//                    mLastExtremes[exType][k]=mLastValues[k];
+//                    float diff=Math.abs(mLastExtremes[exType][k]-mLastExtremes[1-exType][k]);
+//
+//                    if(diff>SENSITIVITY)
+//                    {
+//                        boolean isAlmostAsLargeAsPrevious=diff>(mLastDiff[k]*2/3);
+//                        boolean isPreviousLargerEnough=mLastDiff[k]>(diff/3);
+//                        boolean isNotContra=(mLastMatch!=1-exType);
+//                        if(isAlmostAsLargeAsPrevious&&isPreviousLargerEnough&&isNotContra)
+//                        {
+//                            mEnd=System.currentTimeMillis();
+//                            //通过两次运动间隔判断是否走了一步
+//                            if(mEnd-mStart>500)
+//                            {
+//                                CURRENT_SETP++;
+//                                mLastMatch=exType;
+//                                mStart=mEnd;//结束时间变为下一次开始时间
+//                                //存储当前步数
+//                                SaveStepPreference.putIntValues("sport_steps",CURRENT_SETP);
+//                            }
+//                        }
+//                        else{
+//                            mLastMatch=-1;
+//                        }
+//                    }
+//                    mLastDiff[k]=diff;
+//                }
+//                mLastDirections[k]=direction;
+//                mLastValues[k]=v;
+//            }
+//        }
+//    }
+    
     @Override
     protected void onResume() {
         //注册传感器监听

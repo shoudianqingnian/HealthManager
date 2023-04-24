@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity{
             case R.id.bt_common_login://登录按钮：登入主界面
                 login();
                 break;
-                case R.id.bn_forget_pwd://忘记密码按钮:跳转到忘记密码界面
+            case R.id.bn_forget_pwd://忘记密码按钮:跳转到忘记密码界面
                 intent=new Intent(LoginActivity.this,RetrieveActivity.class);
                 startActivity(intent);
                 finish();
